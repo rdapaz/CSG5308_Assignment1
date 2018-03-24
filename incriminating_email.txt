@@ -1,0 +1,21 @@
+MAIL FROM: <flynn.griffen@topgear.com>RCPT TO: <mysterious_auto_companyX@darkwebsite.onion>From: "Flynn Griffen" <flynn.griffen@topgear.com>
+To: <mysterious_auto_companyX@darkwebsite.onion>
+Subject: mission complete
+
+Hello
+
+I have the "package" you asked for, see you at the agreed location for extraction
+
+Regards
+
+FMAIL FROM: <flynn.griffen@topgear.com>RCPT TO: <mysterious_auto_companyX@darkwebsite.onion>From: "Flynn Griffen" <flynn.griffen@topgear.com>
+To: <mysterious_auto_companyX@darkwebsite.onion>
+Subject: mission complete
+
+Hello
+
+I have the "package" you asked for, see you at the agreed location for extraction
+
+Regards
+
+F
