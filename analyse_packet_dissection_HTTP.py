@@ -1,17 +1,10 @@
+import re
 import json
 import pprint
-import os
 import datetime
 import pytz
 import sqlite3
-
-
-ROOT_FOLDER = r'/home/rdapaz/Desktop'
-file_path = os.path.join(ROOT_FOLDER, 'packet_dissection_FTP.json')
-path_to_db = os.path.join(ROOT_FOLDER, 'capture_events.sqlite3' )
-
-with open(file_path, 'r') as f:
-    data = json.load(f)
+import os
 
 
 def pretty_printer(o):
@@ -19,21 +12,19 @@ def pretty_printer(o):
     pp.pprint(o)
 
 
-def ftp_request_getter(ftp_chain):
-    for k in ftp_chain.keys():
-        if k == 'ftp.request':
-            pass
-        elif k == 'ftp.response':
-            pass
-        else:
-            k = k.replace('\\r\\n', '')
-            return k
-
-
 def dt_from_epoch(epoch):
     my_timezone = pytz.timezone('Australia/Perth')
     return datetime.datetime.fromtimestamp(float(epoch)). \
         astimezone(my_timezone).strftime('%Y-%m-%d %H:%M:%S')
+
+
+ROOT_FOLDER = r'/home/rdapaz/Desktop'
+file_path = os.path.join(ROOT_FOLDER, 'packet_dissection_FTP.json')
+path_to_db = os.path.join(ROOT_FOLDER, 'capture_events.sqlite3' )
+
+
+with open(os.path.join(ROOT_FOLDER, 'packet_dissection.json'), 'r') as f:
+    data = json.load(f)
 
 
 my_data = []
@@ -43,43 +34,45 @@ for entry in data:
     dt = dt_from_epoch(epoch)
     source_ip = entry["_source"]["layers"]["ip"]["ip.src"]
     destn_ip = entry["_source"]["layers"]["ip"]["ip.dst"]
-    cmd_resp = ftp_request_getter(entry["_source"]["layers"]["ftp"])
-    command, response = '', ''
-    if any(cmd_resp.startswith(x) for x in ['CWD', 'DELE', 'LIST', 'PASS', 
-                    'PORT', 'QUIT', 'RETR', 'RMD', 'STOR', 'SYST', 'TYPE',
-                    'USER']):
-        command = cmd_resp
-    else:
-        response = cmd_resp
-    my_data.append([frame_number, dt, source_ip, destn_ip, command, response])
-
+    referrer = ''
+    full_uri = ''
+    try:
+        referrer = entry["_source"]["layers"]["http"]["http.referer"]
+    except:
+        pass
+    try:
+        uri = entry["_source"]["layers"]["http"]["http.request.full_uri"]
+    except:
+        pass
+    if source_ip == '192.168.1.5':
+        my_data.append([frame_number, dt, source_ip, destn_ip, referrer, uri])
 
 conn = sqlite3.connect(path_to_db)
 cur = conn.cursor()
-sql = 'DROP TABLE IF EXISTS ftp_events'
+sql = 'DROP TABLE IF EXISTS http_events'
 cur.execute(sql)
 
 sql = """
-    CREATE TABLE IF NOT EXISTS ftp_events (
+    CREATE TABLE IF NOT EXISTS http_events (
     id integer PRIMARY KEY,
     frame_number long,
     dt TEXT,
     source_ip TEXT,
     destn_ip TEXT,
-    command TEXT,
-    response TEXT
+    referrer TEXT,
+    uri TEXT
     )
     """
 cur.execute(sql)
 
 sql = """
-    INSERT INTO ftp_events (
+    INSERT INTO http_events (
         frame_number,
         dt,
         source_ip,
         destn_ip,
-        command,
-        response
+        referrer,
+        uri
         )
     VALUES (
     ?, ?, ?, ?, ?, ?)
