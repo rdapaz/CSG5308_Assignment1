@@ -1,0 +1,6 @@
+-rwxrwxrwx    1 0        0              74 Feb 11 13:42 aws-credentials.txt
+-rwxrwxrwx    1 0        0          229405 Feb 11 13:42 seaslug-mascot.jpg
+-rwxrwxrwx    1 0        0          116632 Feb 11 13:42 seaslug-schematic.png
+-rwxrwxrwx    1 0        0              74 Feb 11 13:42 aws-credentials.txt
+-rwxrwxrwx    1 0        0          229405 Feb 11 13:42 seaslug-mascot.jpg
+-rwxrwxrwx    1 0        0          116632 Feb 11 13:42 seaslug-schematic.png

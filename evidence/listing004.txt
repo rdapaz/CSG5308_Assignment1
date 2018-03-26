@@ -1,0 +1,10 @@
+-rwxrwxrwx    1 0        0             544 Feb 11 13:26 experiment1.csv
+-rwxrwxrwx    1 0        0             544 Feb 11 13:26 experiment2.csv
+-rwxrwxrwx    1 0        0             543 Feb 11 13:26 experiment3.csv
+-rwxrwxrwx    1 0        0             545 Feb 11 13:26 experiment4.csv
+-rwxrwxrwx    1 0        0             547 Feb 11 13:26 experiment5.csv
+-rwxrwxrwx    1 0        0             544 Feb 11 13:26 experiment1.csv
+-rwxrwxrwx    1 0        0             544 Feb 11 13:26 experiment2.csv
+-rwxrwxrwx    1 0        0             543 Feb 11 13:26 experiment3.csv
+-rwxrwxrwx    1 0        0             545 Feb 11 13:26 experiment4.csv
+-rwxrwxrwx    1 0        0             547 Feb 11 13:26 experiment5.csv

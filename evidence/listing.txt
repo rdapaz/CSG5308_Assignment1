@@ -1,0 +1,6 @@
+-rwxrwxrwx    1 0        0           48567 Feb 11 13:41 rainbow-fish-2.jpg
+-rwxrwxrwx    1 0        0           89011 Feb 11 13:41 rainbowfish-schematic.gif
+-rwxrwxrwx    1 0        0              62 Feb 11 13:41 suppliers.txt
+-rwxrwxrwx    1 0        0           48567 Feb 11 13:41 rainbow-fish-2.jpg
+-rwxrwxrwx    1 0        0           89011 Feb 11 13:41 rainbowfish-schematic.gif
+-rwxrwxrwx    1 0        0              62 Feb 11 13:41 suppliers.txt
