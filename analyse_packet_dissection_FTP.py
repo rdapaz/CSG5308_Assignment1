@@ -4,11 +4,16 @@ import os
 import datetime
 import pytz
 import sqlite3
+import sys
 
 
-ROOT_FOLDER = r'/home/rdapaz/Desktop'
-file_path = os.path.join(ROOT_FOLDER, 'packet_dissection_FTP.json')
-path_to_db = os.path.join(ROOT_FOLDER, 'capture_events.sqlite3' )
+current_path = os.path.dirname(sys.argv[0])
+os.chdir(current_path)
+ROOT = r'.' 
+JSON_FOLDER = os.path.join(ROOT, 'json_dumps')
+
+file_path = os.path.join(JSON_FOLDER, 'packet_dissection_FTP.json')
+path_to_db = os.path.join(ROOT, 'capture_events.sqlite3' )
 
 with open(file_path, 'r') as f:
     data = json.load(f)

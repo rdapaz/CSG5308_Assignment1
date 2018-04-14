@@ -1,10 +1,10 @@
-import re
 import json
 import pprint
 import datetime
 import pytz
 import sqlite3
 import os
+import sys
 
 
 def pretty_printer(o):
@@ -18,12 +18,16 @@ def dt_from_epoch(epoch):
         astimezone(my_timezone).strftime('%Y-%m-%d %H:%M:%S')
 
 
-ROOT_FOLDER = r'/home/rdapaz/Desktop'
-file_path = os.path.join(ROOT_FOLDER, 'packet_dissection_FTP.json')
-path_to_db = os.path.join(ROOT_FOLDER, 'capture_events.sqlite3' )
+current_path = os.path.dirname(sys.argv[0])
+os.chdir(current_path)
+ROOT = r'.' 
+JSON_FOLDER = os.path.join(ROOT, 'json_dumps')
+
+file_path = os.path.join(JSON_FOLDER, 'packet_dissection_HTTP.json')
+path_to_db = os.path.join(ROOT, 'capture_events.sqlite3' )
 
 
-with open(os.path.join(ROOT_FOLDER, 'packet_dissection.json'), 'r') as f:
+with open(file_path, 'r') as f:
     data = json.load(f)
 
 
