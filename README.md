@@ -1,2 +1,2 @@
-# CSG5138_ass1
-Scripts created for CSG5138 Assignment 1
+# CSG5308 Assignment 1
+Scripts created for CSG5308 Assignment 1
